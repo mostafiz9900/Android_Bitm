@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".MainActivity">
+
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Signe Up"
+    android:textSize="20dp"
+    android:textStyle="bold"
+    android:textColor="@color/colorGreen"
+    android:background="@color/colorA"
+    android:gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/firstET"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:hint="First Name"
+            android:textSize="16dp"
+            android:singleLine="true"
+            android:imeOptions="actionNext"/>
+        <EditText
+            android:id="@+id/lastET"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:hint="Last Name"
+            android:textSize="16dp"
+            android:singleLine="true"
+            android:imeOptions="actionNext"/>
+    </LinearLayout>
+    <EditText
+        android:id="@+id/emailET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:textSize="16dp"
+        android:inputType="textEmailAddress"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
+        />
+    <EditText
+        android:id="@+id/passwordlET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:textSize="16dp"
+        android:inputType="textPassword"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
+        />
+    <AutoCompleteTextView
+        android:id="@+id/bloodACTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your blood group"
+        android:textSize="16dp"
+        android:singleLine="true"
+        android:imeOptions="actionDone"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/mailRB"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="Mail"
+            android:checked="true"/>
+        <RadioButton
+            android:id="@+id/femailRB"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="Femail"/>
+    </RadioGroup>
+    <CheckBox
+        android:id="@+id/conditionchkB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I agree Terms And Conditions: "
+        android:checked="true"/>
+    <Button
+        android:id="@+id/signBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign up"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:textColor="@color/colorRed"
+        android:background="@color/colorA"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alredy Have a account "/>
+        <TextView
+            android:id="@+id/signInBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign In "
+            android:textColor="@color/colorRed"
+            android:textStyle="italic"
+            android:textSize="18dp"
+            />
+    </LinearLayout>
+</LinearLayout>
