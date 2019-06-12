@@ -15,18 +15,17 @@ private String data;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textET=findViewById(R.id.textET);
-        saBtn=findViewById(R.id.saBtn);
+        textET = findViewById(R.id.textET);
+        saBtn = findViewById(R.id.saBtn);
         saBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                data=textET.getText().toString().trim();
-                Intent intent=new Intent(MainActivity.this,SecondActivity.class);
-                intent.putExtra("name",data);
+                data = textET.getText().toString().trim();
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("name", data);
                 startActivity(intent);
             }
         });
 
 
     }
-}
