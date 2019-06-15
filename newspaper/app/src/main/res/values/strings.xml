@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">News Paper</string>
+    <string name="copa_data">
+        Language and framework-specific guidelines 
+        provide information on how to create and run an
+        application using one of the many supported 
+        frameworks and languages....
+    </string>
+    <string name="icc">
+        The selectors’ announcement in Dhaka yesterday confirmed what those who have
+        followed the Bangladesh team since the start of the series in Ireland had
+        already suspected -- that the 15 selected for the....
+    </string>
+    <string name="sakib">
+      Bangladesh have named Shakib Al Hasan in their World Cup squad and want
+        him to return "immediately" from the Indian Premier League....
+    </string>
+
+
+</resources>

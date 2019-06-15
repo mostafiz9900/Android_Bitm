@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item android:title="One"
+    android:id="@+id/one"
+    app:showAsAction="always"
+    android:icon="@drawable/ic_assignment_returned_black_24dp">
+
+</item>
+    <item android:title="Two"
+        android:id="@+id/two"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_bluetooth_black_24dp">
+
+    </item>
+    <item android:title="Three"
+        android:id="@+id/three">
+
+    </item>
+</menu>
