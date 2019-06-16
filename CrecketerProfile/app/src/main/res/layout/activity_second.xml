@@ -6,22 +6,35 @@
     android:layout_height="match_parent"
     android:background="#dff582"
     android:orientation="vertical"
-    android:gravity="center"
     tools:context=".SecondActivity">
 
-
+<ImageView
+    android:id="@+id/imageView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="10dp"/>
 
     <TextView
         android:id="@+id/nameTV"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="5dp"
         android:textSize="30dp" />
 
 
     <TextView
         android:id="@+id/bornTV"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15dp" />
+        android:gravity="center"
+        android:textSize="20dp" />
+    <TextView
+        android:id="@+id/battingTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="10dp" />
 
 </LinearLayout>

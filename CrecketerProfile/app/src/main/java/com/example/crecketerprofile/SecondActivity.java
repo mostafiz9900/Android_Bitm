@@ -9,9 +9,12 @@ import android.widget.TextView;
 public class SecondActivity extends AppCompatActivity {
 private TextView nameTV;
 private TextView bornTV;
+private TextView battingTV;
+
 
 private String name;
 private String born;
+private String batting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,7 @@ private String born;
 
         nameTV=findViewById(R.id.nameTV);
         bornTV=findViewById(R.id.bornTV);
+        battingTV=findViewById(R.id.battingTV);
 
 
         name=getIntent().getStringExtra("name");
@@ -27,6 +31,9 @@ private String born;
 
         born=getIntent().getStringExtra("born");
         bornTV.setText(born);
+
+        batting=getIntent().getStringExtra("batting");
+        battingTV.setText(batting);
 
 
 
