@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CardViewCreckerNews</string>
+    <string name="bd">
+        ‘Best thing was that we didn’t panic’
+    </string>
+    <string name="bdData">
+        There were screaming Bangladesh fans in Taunton, and with every boundary
+        Shakib Al Hasan or Liton Das hit on way to chasing West Indies’ 321 for
+        eight was greeted with rising decibels.
+    </string>
+</resources>
