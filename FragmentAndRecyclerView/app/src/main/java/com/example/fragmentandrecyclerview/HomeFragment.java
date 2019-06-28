@@ -47,7 +47,7 @@ private HomeFragment homeFragment;
 
     private void getProductList() {
         Product product=new Product("Hu-007","Lenovo",500,R.drawable.clock);
-        Product product2=new Product("Hu-007","Lenovo",500,R.drawable.clock);
+        Product product2=new Product("HP-0055","Computer",5005225,R.drawable.clock);
         productList.add(product);
         productList.add(product2);
 
