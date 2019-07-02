@@ -1,9 +1,11 @@
 package com.example.fragmentandrecyclerview;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,7 +24,7 @@ public class HomeFragment extends Fragment {
 private List<Product> productList;
 private RecyclerView recyclerViewLayout;
 private ProductAdapter productAdapter;
-private HomeFragment homeFragment;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -41,13 +43,13 @@ private HomeFragment homeFragment;
     }
 
     private void initRecyclerView() {
-        recyclerViewLayout.setLayoutManager(new LinearLayoutManager(homeFragment.getContext()));
+        recyclerViewLayout.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewLayout.setAdapter(productAdapter);
     }
 
     private void getProductList() {
         Product product=new Product("Hu-007","Lenovo",500,R.drawable.clock);
-        Product product2=new Product("HP-0055","Computer",5005225,R.drawable.clock);
+        Product product2=new Product("HP-0055","Computer",55225,R.drawable.clock);
         productList.add(product);
         productList.add(product2);
 
@@ -57,8 +59,7 @@ private HomeFragment homeFragment;
     private void init(View view) {
         productList=new ArrayList<>();
         recyclerViewLayout=view.findViewById(R.id.recycleViewLayout);
-        productAdapter=new ProductAdapter(productList);
-        homeFragment=new HomeFragment();
+        productAdapter=new ProductAdapter(productList,getContext());
     }
 
 }
