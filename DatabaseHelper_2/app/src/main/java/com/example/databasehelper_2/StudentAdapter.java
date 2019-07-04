@@ -33,15 +33,22 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Student currentStudent = studentList.get(position);
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+        final Student currentStudent = studentList.get(position);
         holder.nameTv.setText(currentStudent.getName());
         holder.ageTv.setText(currentStudent.getAge());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                helper = new DatabaseHelper(context);
+                helper.deleteData(currentStudent.getId());
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return studentList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -52,7 +59,6 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
             nameTv = itemView.findViewById(R.id.nameTV);
             ageTv = itemView.findViewById(R.id.ageTv);
 
-            studentList = new ArrayList<>();
             helper = new DatabaseHelper(context);
         }
     }

@@ -43,10 +43,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return id;
     }
 
-    public Cursor  dataList() {
+    public Cursor dataList() {
         String show_all = "select * from " + TABLE_NAME;
-        SQLiteDatabase database=getReadableDatabase();
-        Cursor cursor=database.rawQuery(show_all,null);
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(show_all, null);
         return cursor;
+    }
+
+    public void deleteData(int id) {
+        getWritableDatabase().delete(TABLE_NAME, "Id=?", new String[]{String.valueOf(id)});
     }
 }
