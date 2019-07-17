@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(phone.length()==11){
                     Intent intent = new Intent(LoginActivity.this,VerifyActivity.class);
                     intent.putExtra("phone",phone);
+                    startActivity(intent);
                 }
                 else{
                     Toast.makeText(LoginActivity.this, "Invalid Phone Number", Toast.LENGTH_SHORT).show();
