@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
     private ActivitySignUpBinding signUpBinding;
@@ -79,9 +81,17 @@ signUpBinding.signUpToLoginBtn.setVisibility(View.VISIBLE);
             public void onComplete(@NonNull Task<AuthResult> task) {
                // signUpBinding.signUpToLoginBtn.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "Register is successful", Toast.LENGTH_SHORT).show();
+                    finish();
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//button click borle toper sob clear hobe
+                    startActivity(intent);
+                    //Toast.makeText(getApplicationContext(), "Register is successful", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Register is not successful", Toast.LENGTH_SHORT).show();
+                    if (task.getException() instanceof FirebaseAuthUserCollisionException){
+                        Toast.makeText(getApplicationContext(), "user is alredy register", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(getApplicationContext(), "Error "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
