@@ -6,60 +6,64 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="10dp"
-
         android:background="#ABB6BD"
+        android:orientation="vertical"
+        android:padding="10dp"
         tools:context=".SignUpActivity">
+
         <EditText
             android:id="@+id/nameSingUpEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
             android:hint="Name"
-            android:textSize="14dp"
             android:inputType="textEmailAddress"
-            android:layout_marginTop="60dp"/>
+            android:textSize="14dp" />
+
         <EditText
             android:id="@+id/emailSignUpEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:hint="Email"
-            android:textSize="14dp"
             android:inputType="textEmailAddress"
-            android:layout_marginTop="20dp"/>
+            android:textSize="14dp" />
+
         <EditText
             android:id="@+id/passwordSignUpEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:hint="Password"
-            android:textSize="14dp"
             android:inputType="textPassword"
-            android:layout_marginTop="20dp"/>
+            android:textSize="14dp" />
 
         <Button
             android:id="@+id/signUpBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign Up"/>
+            android:text="Sign Up" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:layout_height="wrap_content"
-                android:text="Do you all rady register?"
-                android:layout_marginTop="10dp"/>
+                android:text="Do you all rady register?" />
+
             <TextView
                 android:id="@+id/sinUpToSingInTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="@string/singin"
                 android:layout_marginTop="10dp"
+                android:text="@string/singin"
 
                 />
         </LinearLayout>

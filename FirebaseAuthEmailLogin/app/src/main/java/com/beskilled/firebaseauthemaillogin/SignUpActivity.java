@@ -17,17 +17,23 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.sql.DatabaseMetaData;
+import java.util.HashMap;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
     private ActivitySignUpBinding signUpBinding;
     private FirebaseAuth mAuth;
-
+private DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         signUpBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up);
         this.setTitle("Sign Up Activity");
         mAuth = FirebaseAuth.getInstance();
+        databaseReference= FirebaseDatabase.getInstance().getReference();
         signUpBinding.signUpBtn.setOnClickListener(this);
         signUpBinding.signUpToLoginBtn.setOnClickListener(this);
     }
@@ -46,8 +52,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void userRegister() {
-        String userName = signUpBinding.nameSignEt.getText().toString().trim();
-        String email = signUpBinding.emailSignEt.getText().toString().trim();
+        final String userName = signUpBinding.nameSignEt.getText().toString().trim();
+        final String email = signUpBinding.emailSignEt.getText().toString().trim();
         String passWord = signUpBinding.passwordSignUpEt.getText().toString().trim();
 signUpBinding.signUpToLoginBtn.setVisibility(View.VISIBLE);
         if (userName.isEmpty()) {
@@ -81,10 +87,16 @@ signUpBinding.signUpToLoginBtn.setVisibility(View.VISIBLE);
             public void onComplete(@NonNull Task<AuthResult> task) {
                // signUpBinding.signUpToLoginBtn.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
-                    finish();
+                    String userId=mAuth.getCurrentUser().getUid();
+                    DatabaseReference userRef=databaseReference.child("users").child(userId);
+                    HashMap<String,Object> userMap=new HashMap<>();
+                    userMap.put("userName",userName);
+                    userMap.put("email",email);
+                    userRef.setValue(userMap);
+                  /*  finish();
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//button click borle toper sob clear hobe
-                    startActivity(intent);
+                    startActivity(intent);*/
                     //Toast.makeText(getApplicationContext(), "Register is successful", Toast.LENGTH_SHORT).show();
                 } else {
                     if (task.getException() instanceof FirebaseAuthUserCollisionException){
