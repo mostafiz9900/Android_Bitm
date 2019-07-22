@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -52,10 +53,12 @@ init();
         final String name=signUpBinding.nameSignUpEt.getText().toString().trim();
         final String email=signUpBinding.emailSignUpEt.getText().toString().trim();
         String password=signUpBinding.passwordSignUpEt.getText().toString().trim();
+        signUpBinding.signUpPB.setVisibility(View.VISIBLE);
         firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+                    signUpBinding.signUpPB.setVisibility(View.GONE);
                   String userId=firebaseAuth.getCurrentUser().getUid();
                   DatabaseReference userRef=database.child("student").child(userId);
                     HashMap<String,Object> student=new HashMap<>();
@@ -73,7 +76,11 @@ init();
                         }
                     });
                 }else {
-                    Toast.makeText(getApplicationContext(), "Unsuccessful", Toast.LENGTH_SHORT).show();
+                   if (task.getException() instanceof FirebaseAuthUserCollisionException){
+                       Toast.makeText(getApplicationContext(), "User already registered", Toast.LENGTH_SHORT).show();
+                   }else {
+                       Toast.makeText(getApplicationContext(), "Error :" +task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                   }
                 }
             }
         });

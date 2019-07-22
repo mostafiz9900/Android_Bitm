@@ -41,10 +41,12 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = signInBinding.emailSingInEt.getText().toString().trim();
                 String password = signInBinding.passwordSingInEt.getText().toString().trim();
+                signInBinding.signInPB.setVisibility(View.VISIBLE);
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            signInBinding.signInPB.setVisibility(View.GONE);
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
                         }
