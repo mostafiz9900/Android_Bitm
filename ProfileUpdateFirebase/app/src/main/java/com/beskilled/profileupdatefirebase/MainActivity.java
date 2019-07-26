@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==REF_FOR_IMAGE && requestCode==RESULT_OK){
+        if (requestCode==REF_FOR_IMAGE && resultCode==RESULT_OK){
             if (data!=null){
                 Uri uri=data.getData();
                 mainBinding.imageSelectCIV.setImageURI(uri);

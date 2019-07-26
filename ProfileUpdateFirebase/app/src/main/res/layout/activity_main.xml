@@ -15,17 +15,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="20dp">
-            <com.mikhaellopez.circularimageview.CircularImageView
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:id="@+id/imageSelectCIV"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@drawable/ic_camera_alt_black_24dp"
-                app:civ_border_color="#EEEEEE"
-                app:civ_border_width="4dp"
-                app:civ_shadow="true"
-                app:civ_shadow_radius="10"
-                app:civ_shadow_color="#8BC34A"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:src="@drawable/ic_camera_alt_black_24dp"/>
         </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
