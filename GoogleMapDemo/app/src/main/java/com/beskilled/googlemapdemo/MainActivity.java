@@ -57,11 +57,11 @@ private Button lButton;
 
     }
 
-    private void getPickerLocation(final GoogleMap map) {
-        map.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener() {
+    private void getPickerLocation(final GoogleMap googleMap) {
+        googleMap.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener() {
             @Override
             public void onCameraIdle() {
-                LatLng pickerlatlng=map.getCameraPosition().target;
+                LatLng pickerlatlng=googleMap.getCameraPosition().target;
                 lButton.setText(getAddres(pickerlatlng.latitude,pickerlatlng.longitude));
             }
         });
@@ -87,33 +87,30 @@ private Button lButton;
 
 map=googleMap;
         // Add a marker in Sydney, Australia, and move the camera.
-        LatLng bitm = new LatLng(23.00, 90.00);
-        googleMap.addMarker(new MarkerOptions().position(bitm).title("Marker in Sydney"));
+        LatLng bitm = new LatLng(23.7508671, 90.3913638);
+        googleMap.addMarker(new MarkerOptions().position(bitm).title("Marker in Sydney").snippet("BITM"));
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bitm,10));
 
-        /*if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    Activity#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for Activity#requestPermissions for more details.
+       /* if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
             return;
         }*/
         googleMap.setMyLocationEnabled(true);
-
-        getPickerLocation(googleMap);
-
-        map.getUiSettings().setMyLocationButtonEnabled(false);
+        googleMap.getUiSettings().setMyLocationButtonEnabled(false);
         getCurrentLocation();
+        getPickerLocation(googleMap);
 
     }
 
-    @SuppressLint("MissingPermission")
+    @SuppressLint({"MissingPermission", "NewApi"})
     private void getCurrentLocation() {
         FusedLocationProviderClient  fusedLocationProviderClient=new FusedLocationProviderClient(this);
-       Task location= fusedLocationProviderClient.getLastLocation();
+       /* if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED){
+            return;
+        }*/
+        Task location= fusedLocationProviderClient.getLastLocation();
        location.addOnCompleteListener(new OnCompleteListener() {
            @Override
            public void onComplete(@NonNull Task task) {
@@ -122,7 +119,7 @@ map=googleMap;
                    LatLng currentLantLng=new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
                   String address= getAddres(currentLocation.getLatitude(),currentLocation.getLongitude());
                    map.addMarker(new MarkerOptions().position(currentLantLng).title(address));
-                   map.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLantLng,10));
+                   map.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLantLng,15));
                }
            }
        });
