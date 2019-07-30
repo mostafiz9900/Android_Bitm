@@ -5,29 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:padding="10dp"
     tools:context=".MainActivity">
 
    <EditText
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:id="@+id/nameET"
-       android:hint="Name"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/emailET"
-        android:hint="Email"/>
-<Button
+    android:id="@+id/nameEt"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/saveBtn"
-    android:text="Save"
-    android:onClick="saveData"/>
-    <Button
+       android:hint="Name"
+    android:layout_margin="10dp"/>
+    <EditText
+        android:id="@+id/emailEt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Email"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_margin="10dp"
+        android:onClick="saveBtn"/>
+    <Button
         android:id="@+id/welcomeBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Welcome"
-        android:onClick="Welcome"/>
+        android:layout_margin="10dp"
+        android:onClick="welcomeBtn"/>
+
 </LinearLayout>
